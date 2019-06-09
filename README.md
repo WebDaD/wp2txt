@@ -17,4 +17,4 @@ Just check out the first lines of cron.php:
 
 ## What is twtxt
 
-TODO: link, etc
+[twtxt is a decentralised, minimalist microblogging service for hackers.](https://github.com/buckket/twtxt)

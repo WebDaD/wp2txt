@@ -4,12 +4,13 @@ $wp_site = "";
 $twtxt = "";
 $log = "";
 $token = "";
+$days_back = 7;
 // Config end
 
 parse_str($argv[1], $params);
 if ($params['token'] == $token || $_GET['token'] == $token) {
   $now = date('Y-m-d\TH:i:s');
-  $yesterday = date('Y-m-d\TH:i:s', strtotime('-1 day', strtotime($now)));
+  $yesterday = date('Y-m-d\TH:i:s', strtotime('-'.$days_back.' day', strtotime($now)));
 
   $json = file_get_contents($wp_site."/wp-json/wp/v2/posts?after=".$yesterday);
   $posts = json_decode($json);
@@ -34,7 +35,7 @@ if ($params['token'] == $token || $_GET['token'] == $token) {
     }
     if (!$already_posted) {
       $written++;
-      array_push($lines, $now."\t".$post->title->rendered." ".$wp_site."/?p=".$post->id);
+      array_push($lines, $post->date."\t".$post->title->rendered." ".$wp_site."/?p=".$post->id);
     }
   }
   file_put_contents($twtxt, implode("\n", $lines));

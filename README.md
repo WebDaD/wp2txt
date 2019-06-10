@@ -14,6 +14,7 @@ Just check out the first lines of cron.php:
 - $twtxt: Path to File
 - $log: Where to log the actions to
 - $token: Your Access-Token
+- $days_back: How many Days of Posts should be pulled in.
 
 If you dont already have a twtxt.txt-File, consider using the template from this project and fill out the blanks.
 

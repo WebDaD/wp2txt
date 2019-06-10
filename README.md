@@ -15,6 +15,23 @@ Just check out the first lines of cron.php:
 - $log: Where to log the actions to
 - $token: Your Access-Token
 
+If you dont already have a twtxt.txt-File, consider using the template from this project and fill out the blanks.
+
+Also you may need to edit your _.htaccess_-File, vor example like this:
+
+    # BEGIN WordPress
+    <IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteRule ^wp2twtxt\.php$ - [L]
+    RewriteRule ^twtxt\.txt$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+    </IfModule>
+    # END WordPress
+
 ## What is twtxt
 
 [twtxt is a decentralised, minimalist microblogging service for hackers.](https://github.com/buckket/twtxt)

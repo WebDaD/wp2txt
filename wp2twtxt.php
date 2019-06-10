@@ -34,13 +34,13 @@ if ($params['token'] == $token || $_GET['token'] == $token) {
     }
     if (!$already_posted) {
       $written++;
-      array_push($lines, $now."\\t".$post->title->rendered." ".$wp_site."/?p=".$post->id);
+      array_push($lines, $now."\t".$post->title->rendered." ".$wp_site."/?p=".$post->id);
     }
   }
-  file_put_contents($twtxt, implode("\\n", $lines));
+  file_put_contents($twtxt, implode("\n", $lines));
 
   $txt = $now.": ".$written." lines posted to ".$twtxt;
-  $myfile = file_put_contents('logs.txt', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
+  $myfile = file_put_contents($log, $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
 } else {
   die(); // No Message to deter script kiddies ;-)
 }

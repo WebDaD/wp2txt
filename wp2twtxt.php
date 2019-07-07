@@ -35,7 +35,7 @@ if ($params['token'] == $token || $_GET['token'] == $token) {
     }
     if (!$already_posted) {
       $written++;
-      array_push($lines, $post->date."\t".$post->title->rendered." ".$wp_site."/?p=".$post->id);
+      array_push($lines, $post->date."\t".$post->title->rendered." ".$wp_site."?p=".$post->id);
     }
   }
   file_put_contents($twtxt, implode("\n", $lines));
